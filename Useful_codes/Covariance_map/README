@@ -1,0 +1,91 @@
+Program Overview:
+
+This program reads input data points (p1, p2), creates a 2D histogram, converts it to an energy landscape using Boltzmann inversion, and outputs both the energy values and corresponding time points from the original data.
+Key Components:
+
+    Data Structures:
+
+        input type: Stores pairs of values (p1, p2)
+
+        histo type: Stores histogram/energy values (h1, h2, h3)
+
+    Input:
+
+        Reads parameters from 'header-isto' file:
+
+            dime: Number of data points
+
+            temp: Temperature
+
+            bin_x, bin_y: Number of bins for each dimension
+
+            delta: Tolerance for matching points
+
+        Reads data points from standard input
+
+    Histogram Calculation:
+
+        Determines min/max values for each dimension
+
+        Calculates bin sizes using step_calc subroutine
+
+        Counts points falling into each bin
+
+    Energy Calculation:
+
+        Converts histogram counts to energy using:
+        energy(i,j) = -R*temp*log(prob(i,j)/maxval(prob))
+
+        Only keeps energy values ≤ 2500
+
+    Output:
+
+        First outputs the energy landscape (bin centers and energy values)
+
+        Then outputs matching time points from original data that correspond to energy points
+
+Potential Issues/Improvements:
+
+    Array Bounds:
+
+        The loops go up to bin_x - 1 and bin_y - 1 for histogram calculation, but the arrays are dimensioned as prob(bin_x,bin_y). This might miss some edge cases.
+
+    Energy Calculation:
+
+        Using maxval(prob) for normalization assumes the most populated bin should have zero energy. This is correct for free energy calculations.
+
+    Matching Algorithm:
+
+        The time point matching uses a simple delta criterion which might miss some points or have ambiguities if delta is too large.
+
+    Fixed Array Sizes:
+
+        The his array has a fixed size of 10000 which might not be optimal.
+
+    Output Format:
+
+        The formats (10, 11) are fixed-width which might not handle all cases well.
+
+Usage Example:
+
+To use this program, you would need:
+
+    A 'header-isto' file with the parameters in order
+
+    Input data piped to stdin with pairs of p1, p2 values
+
+Example command:
+bash
+Copy
+
+./histogram < input_data.dat
+
+The program outputs two sections separated by "************":
+
+    The energy landscape coordinates and values
+
+    The time points and corresponding values from the original data that match energy points
+
+Scientific Context:
+
+This appears to be a free energy calculation from some molecular dynamics or sampling data, where p1 and p2 are likely collective variables or reaction coordinates. The energy landscape is a 2D potential of mean force calculated using histogram reweighting.
