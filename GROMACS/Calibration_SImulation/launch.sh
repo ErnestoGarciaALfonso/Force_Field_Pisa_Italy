@@ -5,14 +5,15 @@
 #SBATCH --gpus-per-node=4             # Number of requested gpus per node
 ##SBATCH --exclusive             # Number of requested gpus per node
 ##SBATCH --mem=230000MB          # Memory per node
-#SBATCH --time 22:59:59         # Walltime, format: HH:MM:SS
+#SBATCH --time 2:59:59         # Walltime, format: HH:MM:SS
 #SBATCH --partition=boost_usr_prod
-#SBATCH --account=CNHPC_1457049 
+#SBATCH --account=CNHPC_1491920 
 
-#SBATCH -J "FF Au25AcCys18"
+#SBATCH -J "Au25AcCys18 test2"
 
 
-
+#module purge
+source /home/cinprod/spack_setup.sh
 module use /home/cinprod/spack/02/modules/BA/0.19/
 module load spack
 #module load quantum-espresso/7.2rc_local--openmpi--4.1.4--nvhpc--23.1-cuda-11.8.0-2gq
@@ -20,27 +21,31 @@ module load spack
 
 module load profile/lifesc
 module load gromacs/2022.3--openmpi--4.1.6--gcc--12.2.0-cuda-12.1
-####Minimization
-gmx grompp -f minim.mdp -c 1AKI_solv_ions.gro  -p topol.top -o em.tpr -maxwarn 2
-gmx_mpi mdrun -v -deffnm em
 
-####Calibration NVT
-gmx_mpi grompp -f nvt.mdp  -c em.gro -r em.gro -p topol.top  -n index.ndx  -o nvt.tpr  -maxwarn 1
-mpirun -np
+#minimization
+#gmx_mpi grompp -f minim.mdp -c 1AKI_solv_ions.gro  -p topol.top -o em.tpr -maxwarn 2
+# mpirun -np 4 gmx_mpi  mdrun -v -deffnm em
 
-####Calibration NPT
-gmx_mpi grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -o npt.tpr
-mpirun -np
-
-
-##### Molecular dynamics
-gmx_mpi grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top  -o md_0_1.tpr
-mpirun -np 4 gmx_mpi mdrun -deffnm md_0_1
-
+### NVT
+# gmx_mpi make_ndx -f  em.gro -o index.ndx  
+#2 | 3 |4
+#5 & a ST
+#name 13 ST_group
+#5 & ! a ST
+#q
+#EOF
+# gmx_mpi grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -n index.ndx -o nvt.tpr
+mpirun -np 4 gmx_mpi mdrun -v -deffnm nvt
 
 
-#To restart simulations
-mpirun -np 4 gmx_mpi mdrun -deffnm md_0_1 -cpi md_0_1.cpt
+##### NPT
 
+#******* gmx_mpi grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -n index.ndx -o npt.tpr -v
+# mpirun -np 4 gmx_mpi mdrun -v -deffnm npt
 
+##### MD
+#**********gmx_mpi grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md_0_1.tpr
+#mpirun -np 4 gmx_mpi mdrun -deffnm md_0_1
 
+#To restart
+#mpirun -np 4 gmx_mpi mdrun -deffnm md_0_1 -cpi md_0_1.cpt
