@@ -1,0 +1,31 @@
+All values are reported in atomic units
+%FLAG TITLE
+ molecule 1: naphthyl
+
+%FLAG ATOM CRD: I4,3E16.7
+ atm.no      X               Y               Z
+   1   1.8191617E+00   0.0000000E+00   0.0000000E+00
+   2   2.2954691E+00   1.7556991E+00   0.0000000E+00
+   3   0.0000000E+00   0.0000000E+00   0.0000000E+00
+
+%FLAG ATOM CHRG: 2(I4,X7),I4,X2,E16.7
+ atm.no   element.no   ivary      q(opt)
+   1          8          0    -8.0691560E-01
+   2          1          0     4.0345780E-01
+   3          1          0     4.0345780E-01
+
+%FLAG TITLE
+ molecule 2: naphthyl
+
+%FLAG ATOM CRD: I4,3E16.7
+ atm.no      X               Y               Z
+   4   1.8191617E+00   0.0000000E+00   0.0000000E+00
+   5   0.0000000E+00   0.0000000E+00   0.0000000E+00
+   6   2.2954691E+00   1.7556991E+00   0.0000000E+00
+
+%FLAG ATOM CHRG: 2(I4,X7),I4,X2,E16.7
+ atm.no   element.no   ivary      q(opt)
+   4          8          1    -8.0691560E-01
+   5          1          2     4.0345780E-01
+   6          1          3     4.0345780E-01
+
