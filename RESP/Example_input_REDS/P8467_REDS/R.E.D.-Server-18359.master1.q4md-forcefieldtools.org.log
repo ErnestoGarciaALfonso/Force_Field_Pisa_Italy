@@ -1,0 +1,134 @@
+
+      ____        ____  _____ ____    _                 
+     |  _ \ _   _|  _ \| ____|  _ \  | |    ___   __ _  
+     | |_) | | | | |_) |  _| | | | | | |   / _ \ /  ' | 
+     |  __/| |_| |  _ <| |___| |_| | | |__| (_) | (_| | 
+     |_|    \__, |_| \_\_____|____/  |_____\___/ \__, | 
+            |___/                                |___/  
+
+Use the home directory to save the QM data of the PyRED job...
+
+Extracting the archive file before running the R.E.D. Server Dev./PyRED job: 
+You uploaded an archive file. The input files for R.E.D. Server Development were extracted with success. 
+
+
+Checking the input files before running the R.E.D. Server Dev./PyRED job: 
+The maximum number of atoms for a molecule/conformation in a PDB input file handled by R.E.D. Server Dev./PyRED is set to 250 atoms. For the reasons of this choice read http://q4md-forcefieldtools.org/REDServer-Development/faq.php#17 
+The maximal number of atoms is correct. 
+
+
+No problem to report in this R.E.D. Server Dev./PyRED job.
+
+
+   Let's start the PyRED job...
+Welcome to: PyRED version JAN-2025
+Time: Thu May 15 14:36:11 CEST 2025
+Hostname: node1
+Checking the configuration of the system...
+Display the system:
+Amount of memory used in QM (in MB): 61440
+Number of processor(s) used in QM: 8
+Interfaced QM program: GAUSSIAN16
+Directory name: Data-R.E.D.Server
+Geometry optimization step: OFF
+Molecular electrostatic potential step: ON
+Charge re­fit and force field library re­building: OFF
+Frequency calculation: OFF
+Gaussian output stripping: ON
+Statistics module: ON
+Charge model: RESP-P1
+Rounding off accuracy for charge values: 4
+Quantum chemistry procedure: NORMAL
+Format chosen for the force file library: MOL3
+Force field chosen: AMBERFF10
+Rounding off force field parameters: ON
+Mode polariszation: NOPOLARIZT
+Limiting the number of generated fragments for INTRA-MCC: ON
+SCF convergence for MEP computation: Default
+Checking the operating system environment...
+Operating system:
+Linux node1 3.10.0-957.el7.x86_64 #1 SMP Thu Nov 8 23:39:32 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+QM program found: g16
+Cannot find iRESP in the system !
+Charge fit program RESP found: resp 2.4
+Name of project: P8467
+Number of PDB input files: 1
+
+Start to check the data in the PDB input files
+Loading the Project.config file
+
+Loading the PDB input file for molecule: 1
+Unknown mark in line :  5
+Checking molecule...
+Title of molecule is empty
+Checking the atom :  1
+Checking the atom :  2
+Checking the atom :  3
+No atom connectivity
+Correcting the molecule
+Atom connectivity(ies) can not be corrected or empty
+Checking the atoms
+Residue name is reserved by system 1
+Residue name is reserved by system 2
+Residue name is reserved by system 3
+Correcting the conformations
+Checking atom connectivities
+Atom connectivity missing
+Atom connectivities not found: determine these connectivities
+Determining the types of the atoms
+Determining chemical equivalencing
+Force setting REORDER = OFF
+Correcting the atoms
+Single residue for the input molecule
+Redundant atom name found: renaming the atom
+End of checking the data in the PDB input files: 1
+
+Checking the Project.config
+
+Copying the JOB1*.log QM output file
+
+Checking JOB1*.log QM output file for molecule: 1
+
+Reading JOB1*.log QM output file for molecule: 1
+Find "Normal termination of Gaussian"
+Find "Stationary point found"
+Find "Standard orientation"
+Energy value :  -76.4635693333
+Two different residues cannot share two atom connectivities
+
+Molecular electrostatic potential computation for molecule: 1
+Cannot find the JOB1*.chk QM output file: JOB2-gau_m1-1-1--1.chk not found 3
+Input file for Gaussian: JOB2-gau_m1-1-1.gjf
+Cannot find the JOB1*.chk QM output file: JOB2-gau_m1-1-2--1.chk not found 3
+Input file for Gaussian: JOB2-gau_m1-1-2.gjf
+
+Executing Gaussian for molecule: 1
+
+Checking JOB2*.log QM output file for molecule: 1
+
+Reading JOB2*.log QM output file - Converting the electrostatic potential for molecule: 1
+Find 'Normal termination of Gaussian'
+Cannot find "Standard orientation"
+Find "Input orientation"
+Output file: espot_m1-1-1.dat
+Find 'Normal termination of Gaussian'
+Cannot find "Standard orientation"
+Find "Input orientation"
+Output file: espot_m1-1-2.dat
+Output file: espot_m1.dat
+
+Creating RESP input(s) for molecule: 1
+Input file: input1-sm_m1.in
+Input file: input2-sm_m1.in
+
+Executing charge fitting for molecule: 1
+Reading charge fit output for molecule: 1
+
+Creating the Data-Default-Proj directory and corresponding files
+Creating the force field library(ies) for molecule: 1
+Output file: Mol-sm_m1-c1.mol2
+Converting QM log output into out output
+Converting QM log output into out output
+Moving the files corresponding to each molecule in a specific directory
+End of the PyRED job
+Time: Thu May 15 14:36:17 CEST 2025

@@ -1,0 +1,6 @@
+OPT_Calc = Off
+MOL_START = Mol_red1.pdb
+MEPCHR_Calc = on
+CHR_TYP = RESP-P1
+CHR_VAL = -1 
+MLT_VAL = 1

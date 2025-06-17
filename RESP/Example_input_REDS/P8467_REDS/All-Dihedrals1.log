@@ -1,0 +1,21 @@
+
+ REMIND COMPUTATIONAL CONDITIONS FOR P8467:
+ MEP computation done
+ Frequency computation not done!
+ QMSOFT       = GAUSSIAN using the 'Normal' mode
+ CHR_TYP      = RESP-P1
+ Theory level = HF/6-31G(d)//See_QM_output/See_QM_output
+ (Single point MEP computation//Geometry optimization)
+ Surface algo = CHELPG
+ MEP points   = Default
+
+ The listed dihedral values below can be used to validate the FF generated
+ by PyRED:
+ These values can be compared to values observed during MD simulation
+ Data are sorted by dihedral values and by atom types (2 central atoms)
+
+     Mol_m1-c1-qmra.pdb  &  Mol-sm_m1-c1.mol2
+             Atom_names       Atom_types         Distances(Å)    Dih.angles(°) 
+ Compute 0 dihedral angles between 3 atoms based on 1 angles and 2 bonds
+
+
