@@ -1,0 +1,48 @@
+&CONTROL
+   calculation      = 'relax'
+   restart_mode     = 'from_scratch'
+   prefix           = "H2O"
+  ! wf_collect       = .true.
+  ! nstep            = 400
+  ! tprnfor          = .true.
+   outdir           = './scr/'
+   pseudo_dir       ="/shared3/Eve/EGA/pseudo/"
+ !  tefield          = .true.
+ !  dipfield         = .true.
+/
+&SYSTEM
+  ibrav     = 1,
+  celldm(1) =25d0,
+   ecutwfc          = 40.0
+   ecutrho          = 200.0
+   occupations      = 'smearing'
+   smearing         = 'gauss'
+   degauss          = 0.005
+   nspin            = 2
+  ! edir             = 3
+   starting_magnetization(1) = 0.1
+   starting_magnetization(2) = 0.0
+   starting_magnetization(3) = 0.0
+   ntyp             = 2
+   nat              = 3
+/
+&ELECTRONS
+   electron_maxstep = 500
+   conv_thr         = 0.0001
+   mixing_mode      = 'plain'
+   mixing_beta      = 0.1
+   diagonalization  = 'david'
+/
+&IONS
+/
+&CELL
+/
+ATOMIC_SPECIES
+H  1.008 h_pbe_v1.4.uspp.F.UPF
+O  15.999 o_pbe_v1.2.uspp.F.UPF
+ATOMIC_POSITIONS {bohr}
+O      18.897261258369284     20.342223332955356     20.186644385695683
+H      18.897261258369284     21.787185407541429     19.081458847987339
+H      18.897261258369284     18.897261258369284     19.081458847987339
+K_POINTS {automatic}
+5 5 5  0 0 0

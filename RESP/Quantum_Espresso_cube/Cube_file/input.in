@@ -1,0 +1,20 @@
+&inputpp
+    prefix = "H2O"
+    outdir = '../scr/'
+    plot_num = 1
+    filplot = 'potential.dat'
+/
+
+&PLOT
+ iflag=3,
+  x0(1) = -0.144000
+  x0(2) = -0.138000
+  x0(3)= -0.120000
+  e1 = 0.288000, 0.000000, 0.000000,
+  e2 = 0.000000, 0.276000, 0.000000,
+  e3 = 0.000000, 0.000000, 0.240000,
+  nx = 24, ny = 23, nz = 20,
+  output_format = 6,
+ fileout='final.cube'
+/
+

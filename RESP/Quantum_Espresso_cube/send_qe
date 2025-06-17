@@ -1,0 +1,17 @@
+source /shared/Libs/intel2018/compilers_and_libraries_2018.5.274/linux/bin/ifortvars.sh -arch intel64 -platform linux
+source /shared/Libs/intel2018/compilers_and_libraries_2018.5.274/linux/bin/iccvars.sh -arch intel64 -platform linux
+source /shared/Libs/intel2018/compilers_and_libraries_2018.5.274/linux/mkl/bin/mklvars.sh intel64
+
+QEHOME=/shared/Codes/Intel-2018/qe-63/bin
+exe=/shared/Libs/intel2018/compilers_and_libraries_2018.5.274/linux/mpi/intel64/bin/mpirun
+export OMP_NUM_THREADS=1
+
+input=pw.in
+out=pw.out
+sed -i "s/'1'/1/g" *.in*
+
+
+$exe -np 156 -hostfile nodes -ppn 52 $QEHOME/pw.x <  Template_Input_file.input  >   Au_AcCys.out
+
+
+
