@@ -1,0 +1,17 @@
+Geometry = GenFormat {
+  <<< "system.gen"
+}
+
+Hamiltonian = DFTB {
+  SCC = Yes
+  SCCTolerance = 1e-6
+  MaxSteps = 1000
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = "/auorg-1-1/"
+    Separator = "-"
+    Suffix = ".skf"
+  }
+  MaxAngularMomentum = {
+    Au = "d"  # Au uses d-electrons
+  }
+}
